@@ -1,0 +1,35 @@
+Bootstrap: docker
+From: nvcr.io/nvidia/nightly/cuda-quantum:cu11-latest
+
+%runscript
+    mount devpts /dev/pts -t devpts
+    cp -r /home/cudaq/* .
+    bash
+
+%post 
+    apt-get update -y && \
+     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+         apt-transport-https \
+         ca-certificates \
+         gnupg \
+         wget && \
+     apt-key del 7fa2af80
+     wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb
+     dpkg -i cuda-keyring_1.0-1_all.deb
+    #  apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
+     rm -rf /var/lib/apt/lists/*
+     apt-get update -y
+    #  echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
+    #  wget -qO - https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
+    #      apt-get update -y && \
+     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+         nsight-compute-2024.3.2 && \
+     rm -rf /var/lib/apt/lists/*
+
+    #  TODO: add ncu to path
+#     which ncu
+# Apptainer> find / -name "ncu" 2>/dev/null
+# /opt/nvidia/nsight-compute/2024.3.2/ncu
+# /opt/nvidia/nsight-compute/2024.3.2/target/linux-desktop-glibc_2_11_3-x64/ncu
+# /opt/nvidia/nsight-compute/2024.3.2/target/linux-desktop-t210-a64/ncu
+# Apptainer> export PATH=$PATH:/opt/nvidia/nsight-compute/2024.3.2

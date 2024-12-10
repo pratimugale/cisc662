@@ -1,5 +1,5 @@
 # cisc662
-Contains code for reproducing experiments done on Bridges-2 for simulating QAOA using CUDA-Q, along with the results.
+Contains code for reproducing experiments done on Bridges-2 and Delta for simulating QAOA using CUDA-Q, along with the results.
 
 ## Usage
 1. `make install`: Build the Singularity image (locally) - it contains the CUDA-Q binaries as the base image, with Nsight Compute installed on top of it for profiling.

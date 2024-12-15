@@ -7,5 +7,6 @@ Contains code for reproducing experiments done on Bridges-2 and Delta for simula
 3. `make analyze`: Generate the plots. Currently assumes that the results are in the results/ folder.
 
 Here is the blog part below.
+New branch
 
 Acknowledgement: This experiment builds upon the QAOA examples mentioned in the Nvidia CUDA-Quantum documentation: https://nvidia.github.io/cuda-quantum/0.8.0/using/examples/qaoa.html

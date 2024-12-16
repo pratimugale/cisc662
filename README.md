@@ -16,4 +16,3 @@ This research used the Delta advanced computing and data resource which is suppo
 
 This experiment builds upon the QAOA examples mentioned in the Nvidia CUDA-Quantum documentation: https://nvidia.github.io/cuda-quantum/0.8.0/using/examples/qaoa.html
 
-Acknowledgement: This experiment builds upon the QAOA examples mentioned in the Nvidia CUDA-Quantum documentation: https://nvidia.github.io/cuda-quantum/0.8.0/using/examples/qaoa.html

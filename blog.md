@@ -54,7 +54,13 @@ The unit of time here is seconds. We can see that the time required for the opti
 
 ![Results for COBYLA without iteration limit](assets/2.png)
 
-Identifying the cause of this issue took us quite some time as it could have multiple reasons - our understanding of the algorithm, the optimizer being used, or perhaps because it could be a characteristic of the graph structures we were using because testing only on bipartite graphs could be a special case. We dived deeper to check why it happens. On using a different optimizer, NelderMead, we obtained a bit better results in terms of cut values for larger number of qubits, but the optimization times still varied similar to the plot above (increasing qubits could give smaller optimization time). By tweaking the parameters of the optimizer, it eventually turned out that the cause of the fluctuating optimization time was the number iterations that the optimizer took to converge. On setting a limit on the maximum number of iterations to 100, we found out that not only does the optimization time become more predictable, but also the accuracy of the results improve significantly even for larger number of qubits. Following is the new plot of Time vs Number of Qubits/Nodes:
+Identifying the cause of this issue took us quite some time as it could have multiple reasons - our understanding of the algorithm, the optimizer being used, or perhaps because it could be a characteristic of the graph structures we were using because testing only on bipartite graphs could be a special case. We dived deeper to check why it happens. On using a different optimizer, NelderMead, we obtained a bit better results in terms of cut values for larger number of qubits, but the optimization times still varied similar to the plot above (increasing qubits could give smaller optimization time). Following is the Time (s) vs Number of Qubits plot when using the NelderMead optimizer:
+
+![NelderMead](assets/11.png)
+
+We can see that this has a fluctuating time required for optimization as well without any obvious pattern.
+
+By tweaking the parameters of the optimizer, it eventually turned out that the cause of the fluctuating optimization time was the number iterations that the optimizer took to converge. On setting a limit on the maximum number of iterations to 100, we found out that not only does the optimization time become more predictable, but also the accuracy of the results improve significantly even for larger number of qubits. Following is the new plot of Time vs Number of Qubits/Nodes:
 
 ![Time vs Number of Nodes](assets/3.png)
 
